@@ -64,14 +64,16 @@ module.exports = () => {
 
     // General Error logging
     console.error = (content) => {
+        //TODO: fix this
+        clearInterval(loop)
         log.push({content: console.colors.FgRed + content.toString() + console.colors.Reset,date:new Date()})
-        console.render()
+        console.render(true)
     }
 
     // INTERNAL: Render to log
-    console.render = () => {
+    console.render = (w) => {
         console.reset()
-        console.window()
+        if(!w) console.window()
 
         let maxHeight = process.stdout.rows - 2
 
@@ -108,5 +110,5 @@ module.exports = () => {
     }
 
     // Init the loop
-    setInterval(console.render,1000)
+    let loop = setInterval(console.render,1000)
 }

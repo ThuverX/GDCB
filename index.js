@@ -85,6 +85,7 @@ client.on('message', msg => {
 
 })
 
+console.log("Logging in...")
 client.login(config.token)
 
 
